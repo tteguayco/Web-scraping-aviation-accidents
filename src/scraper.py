@@ -54,5 +54,13 @@ class AccidentsScraper():
 		first_link_html = self.__download_html(first_link)
 		self.__scrape_variables(first_link_html)
 
-	def data2csv(self, output_file):
-		pass
+	def data2csv(self, filename):
+		# Write to the specified file.
+		# Create it if it does not exist.
+		file = open("../csv/" + filename, "w+")
+
+		# Dump all the data with CSV format
+		for i in range(len(self.data)):
+			for j in range(len(self.data[i])):
+				file.write(self.data[i][j] + ",");
+			file.write("\n");
