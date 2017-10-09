@@ -26,6 +26,9 @@ class AccidentsScraper():
 		html = self.__download_html(self.url + accident_link)
 		bs = BeautifulSoup(html, 'html.parser')
 		fields = bs.findAll('td', class_='caption')
+		# Remove elements that can be values instead of a variable
+		# <td> elements located to the left:
+		fields = [field for field in fields if field.nextSibling != None]
 		for field in fields:
 			# Filter variables' names: remove colon and unify words
 			field_name = field.text
