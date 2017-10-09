@@ -13,26 +13,28 @@ class AccidentsScraper():
 		html = response.read()
 		return html
 
-	def __scrape_variables(self, html):
+	def __scrape_variables_names(self, html):
 		bs = BeautifulSoup(html, 'html.parser')
 		td = bs.find('td', class_='list')
 		accident_link = td.next_element.next_element['href']
 
 		# Remove prefix '/database/'
 		accident_link = accident_link.replace('/database/', '')
-		print accident_link
 
 		# Get the target fields
-		fields_str = []
+		fields_names = []
 		html = self.__download_html(self.url + accident_link)
 		bs = BeautifulSoup(html, 'html.parser')
 		fields = bs.findAll('td', class_='caption')
 		for field in fields:
-			# Remove colon and add the name of the variable to the array
-			fields_str.append(field.text.replace(':', ''))
+			# Filter variables' names: remove colon and unify words
+			field_name = field.text
+			field_name = field_name.replace(':', '')
+			field_name = field_name.replace(' ', '_')
+			fields_names.append(field_name)
 
 		# Save fields
-		self.data.append(fields_str)
+		self.data.append(fields_names)
 
 	def scrape(self):
 		# Download HTML
@@ -52,7 +54,7 @@ class AccidentsScraper():
 		first_link = self.url + years_links[0]
 		print first_link
 		first_link_html = self.__download_html(first_link)
-		self.__scrape_variables(first_link_html)
+		self.__scrape_variables_names(first_link_html)
 
 	def data2csv(self, filename):
 		# Write to the specified file.
