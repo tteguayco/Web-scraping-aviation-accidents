@@ -1,6 +1,6 @@
 from scraper import AccidentsScraper
 
-output_file = "out/dataset.csv"
+output_file = "dataset.csv"
 
 scraper = AccidentsScraper();
 scraper.scrape();
