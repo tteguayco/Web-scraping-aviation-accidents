@@ -1,6 +1,8 @@
 import urllib2
 import re
+import time
 from bs4 import BeautifulSoup
+from dateutil import parser
 
 class AccidentsScraper():
 
@@ -26,15 +28,46 @@ class AccidentsScraper():
 				# Preppend '/' if needed
 				if href[0] != '/':
 					href = '/' + href
+				# Extract year
+				year = re.search('[0-9]{4}', href).group(0)
+				# Preppend year
+				href = '/' + year + href
 				accidents_links.append(href)
 
 		return accidents_links
 
-	def __scrape_variables_names(self, html):
-		pass
+	def __clean_feature_name(self, feature_name):
+		feature_name = feature_name.replace(':', '')
+		feature_name = re.sub('\s+', '', feature_name)
+		return feature_name
 
 	def __scrape_example_data(self, html):
-		pass
+		bs = BeautifulSoup(html, 'html.parser')
+		example_data = []
+		features_names = []
+		trs = bs.findAll('tr')
+
+		# The first <tr> element does not provide useful info
+		trs.pop(0)
+
+		for tr in trs:
+			tds = tr.findAll('td')
+
+			# Read features' names?
+			if len(self.data) == 0:
+				feature_name = tds[0].next_element.text
+				feature_name_cleaned = self.__clean_feature_name(feature_name)
+				features_names.append(feature_name_cleaned)
+
+			example_datum = tds[1].next_element.text
+			example_data.append(example_datum)
+
+		# Store features' names
+		if len(features_names) > 0:
+			self.data.append(features_names)
+
+		# Store the data
+		self.data.append(example_data)
 
 	def __get_years_links(self, html):
 		bs = BeautifulSoup(html, 'html.parser')
@@ -52,8 +85,11 @@ class AccidentsScraper():
 		return years_links
 
 	def scrape(self):
-		print "Web Scraping of planes' crushes data from " + \
+		print "Web Scraping of planes' crashes data from " + \
 			"'" + self.url + "'..."
+
+		# Start timer
+		start_time = time.time()
 
 		# Download HTML
 		html = self.__download_html(self.url + self.subdomain)
@@ -65,12 +101,24 @@ class AccidentsScraper():
 		# For each year, get its accidents' links
 		accidents_links = []
 		for y in years_links:
-			print self.url + y
+			print "Found link to a year of crash: " + self.url + y
 			html = self.__download_html(self.url + y)
 			current_year_accidents = self.__get_accidents_links(html)
 			accidents_links.append(current_year_accidents)
 
-		print accidents_links
+		# For each accident, extract its data
+		for i in range(len(accidents_links)):
+			for j in range(len(accidents_links[i])):
+				print "scraping crash data: " + self.url + \
+					accidents_links[i][j]
+				html = self.__download_html(self.url + \
+					accidents_links[i][j])
+				self.__scrape_example_data(html)
+
+		# Show elapsed time
+		end_time = time.time()
+		print "\nelapsed time: " + str((end_time - start_time) / 60) + \
+			" minutes"
 
 	def data2csv(self, filename):
 		# Write to the specified file.
@@ -80,5 +128,5 @@ class AccidentsScraper():
 		# Dump all the data with CSV format
 		for i in range(len(self.data)):
 			for j in range(len(self.data[i])):
-				file.write(self.data[i][j] + ",");
+				file.write(self.data[i][j].encode('utf-8') + ";");
 			file.write("\n");
