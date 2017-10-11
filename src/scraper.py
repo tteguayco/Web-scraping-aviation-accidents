@@ -41,6 +41,17 @@ class AccidentsScraper():
 		feature_name = re.sub('\s+', '', feature_name)
 		return feature_name
 
+	def __clean_example_datum(self, example_datum):
+		# Date?
+		try:
+			datetime = parser.parse(example_datum)
+			example_datum = str(datetime.day) + \
+				'/' + str(datetime.month) + '/' + str(datetime.year)
+		except ValueError:
+			example_datum = example_datum.replace(',', '')
+
+		return example_datum
+
 	def __scrape_example_data(self, html):
 		bs = BeautifulSoup(html, 'html.parser')
 		example_data = []
@@ -60,7 +71,8 @@ class AccidentsScraper():
 				features_names.append(feature_name_cleaned)
 
 			example_datum = tds[1].next_element.text
-			example_data.append(example_datum)
+			example_datum_cleaned = self.__clean_example_datum(example_datum)
+			example_data.append(example_datum_cleaned)
 
 		# Store features' names
 		if len(features_names) > 0:
@@ -117,8 +129,8 @@ class AccidentsScraper():
 
 		# Show elapsed time
 		end_time = time.time()
-		print "\nelapsed time: " + str((end_time - start_time) / 60) + \
-			" minutes"
+		print "\nelapsed time: " + \
+			str(round(((end_time - start_time) / 60) , 2)) + " minutes"
 
 	def data2csv(self, filename):
 		# Write to the specified file.
