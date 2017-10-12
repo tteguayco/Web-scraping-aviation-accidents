@@ -153,7 +153,7 @@ class AccidentsScraper():
 			str(round(((end_time - start_time) / 60) , 2)) + " minutes"
 
 	def data2csv(self, filename):
-		# Write to the specified file.
+		# Overwrite to the specified file.
 		# Create it if it does not exist.
 		file = open("../csv/" + filename, "w+")
 
