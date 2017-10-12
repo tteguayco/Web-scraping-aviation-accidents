@@ -42,14 +42,29 @@ class AccidentsScraper():
 		return feature_name
 
 	def __clean_example_datum(self, example_datum):
-		# Date?
-		try:
-			datetime = parser.parse(example_datum)
-			example_datum = str(datetime.day) + \
-				'/' + str(datetime.month) + '/' + str(datetime.year)
-		except ValueError:
-			example_datum = example_datum.replace(',', '')
+		# For features 'Aboard' and 'Fatalities', extract just the 1st number
+		example_datum = re.sub("[^\d]*(passengers.*crew.*)", '', example_datum)
+		example_datum.strip()
 
+		# Number?
+		try:
+			example_datum = int(example_datum)
+			example_datum = str(example_datum)
+		except ValueError:
+			# Time?
+			try:
+				example_datum = re.search("\d\d:\d\d", example_datum).group(0)
+			except AttributeError:
+				# Date?
+				try:
+					datetime = parser.parse(example_datum)
+					example_datum = str(datetime.day) + \
+						'/' + str(datetime.month) + '/' + str(datetime.year)
+				except ValueError:
+					#String
+					pass
+
+		example_datum = str(example_datum.encode('utf-8')).strip()
 		return example_datum
 
 	def __scrape_example_data(self, html):
@@ -100,6 +115,8 @@ class AccidentsScraper():
 		print "Web Scraping of planes' crashes data from " + \
 			"'" + self.url + "'..."
 
+		print "This process could take roughly 45 minutes.\n"
+
 		# Start timer
 		start_time = time.time()
 
@@ -117,6 +134,9 @@ class AccidentsScraper():
 			html = self.__download_html(self.url + y)
 			current_year_accidents = self.__get_accidents_links(html)
 			accidents_links.append(current_year_accidents)
+
+			# Uncomment this break in case of debug mode
+			#break
 
 		# For each accident, extract its data
 		for i in range(len(accidents_links)):
@@ -140,5 +160,5 @@ class AccidentsScraper():
 		# Dump all the data with CSV format
 		for i in range(len(self.data)):
 			for j in range(len(self.data[i])):
-				file.write(self.data[i][j].encode('utf-8') + ";");
+				file.write(self.data[i][j] + ";");
 			file.write("\n");
