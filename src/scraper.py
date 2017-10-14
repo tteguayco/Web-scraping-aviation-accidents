@@ -3,6 +3,7 @@ import re
 import time
 from bs4 import BeautifulSoup
 from dateutil import parser
+from geopy.geocoders import Nominatim
 
 class AccidentsScraper():
 
@@ -10,6 +11,7 @@ class AccidentsScraper():
 		self.url = "http://www.planecrashinfo.com"
 		self.subdomain = "/database.htm"
 		self.data = []
+		self.geolocator = Nominatim()
 
 	def __download_html(self, url):
 		response = urllib2.urlopen(url)
@@ -67,6 +69,14 @@ class AccidentsScraper():
 		example_datum = str(example_datum.encode('utf-8')).strip()
 		return example_datum
 
+	def __get_geographical_coordinates(self, location_str):
+		location = self.geolocator.geocode(location_str)
+
+		if location is None:
+			return '?', '?'
+		else:
+			return str(location.latitude), str(location.longitude)
+
 	def __scrape_example_data(self, html):
 		bs = BeautifulSoup(html, 'html.parser')
 		example_data = []
@@ -88,6 +98,17 @@ class AccidentsScraper():
 			example_datum = tds[1].next_element.text
 			example_datum_cleaned = self.__clean_example_datum(example_datum)
 			example_data.append(example_datum_cleaned)
+
+			# If the datum is the LOCATION (index 2), add latitude and longitude
+			if tr == trs[2]:
+				location = (
+					self.__get_geographical_coordinates(tds[1].next_element.text)
+				)
+				if len(self.data) == 0:
+					features_names.append('Latitude')
+					features_names.append('Longitude')
+				example_data.append(location[0])
+				example_data.append(location[1])
 
 		# Store features' names
 		if len(features_names) > 0:
