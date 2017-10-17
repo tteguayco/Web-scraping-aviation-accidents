@@ -1,0 +1,44 @@
+---
+title: "Dataset: Accidentes de avión acontecidos a nivel mundial"
+author: "Teguayco Gutiérrez González"
+date: "17 de octubre de 2017"
+header-includes:
+  - \usepackage[spanish]{babel}
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Descripción
+
+El conjunto de datos generado como parte de esta actividad práctica reúne diferentes características de accidentes de avión ocurridos a nivel mundial entre los años 1920 y 2017. Algunas de las variables que se recogen en el conjunto de datos son la fecha, la hora, la localización, el número de pasajeros o el de fallecidos.
+
+Para la obtención de estos datos se ha utilizado el lenguaje de programación Python y técnicas de Web Scraping para extraer la información alojada en la base de datos online [PlaneCrashInfo](http://www.planecrashinfo.com/database.htm).
+
+## Imagen identificativa
+
+![Avión en llamas tras el accidente en el aeropuerto de Los Rodeos (Tenerife, 1977)](./los_rodeos.jpg)
+
+\newpage
+## Contexto
+
+## Contenido
+
+## Agradecimientos
+
+## Inspiración
+
+El presente conjunto de datos podría utilizarse en ámbitos muy diversos. Uno de ellos podría ser en el periodístico, en el que disponer de los datos de la gran mayoría de accidentes de avión acontecidos en la historia podría valer para sacar a relucir aquellos que puedan resultar más interesante de cara a la realización de un reportaje.
+
+También podría ser de gran utilidad en el campo de la *minería de datos*, a la hora de elaborar modelos predictivos (como por ejemplo árboles de decisión o redes neuronales). Así, se podría querer elaborar un modelo que permita predecir el número de víctimas mortales que podría ocasionar un avión en caso de accidente dadas las características del vuelo.
+
+## Licencia
+
+La licencia escogida para la publicación de este conjunto de datos ha sido .
+
+## Recursos
+
+1. Lawson, R. (2015). Web Scraping with Python. Packt Publishing Ltd. Chapter 2. Scraping the Data  
+2. Mitchel, R. (2015). Web Scraping with Python: Collecting Data from the Modern Web. O'Reilly Media, Inc. Chapter 1. Your First Web Scraper.
