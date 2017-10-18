@@ -3,7 +3,7 @@ import re
 import time
 from bs4 import BeautifulSoup
 from dateutil import parser
-from geopy.geocoders import Nominatim
+from geopy.geocoders import Yandex
 from reason_classifier import ReasonClassifier
 
 class AccidentsScraper():
@@ -12,8 +12,9 @@ class AccidentsScraper():
 		self.url = "http://www.planecrashinfo.com"
 		self.subdomain = "/database.htm"
 		self.data = []
-		self.geolocator = Nominatim(timeout=10)
-		self.reason_classifier = ReasonClassifier()
+		self.geolocator = Yandex()
+		self.reason_classifier = (
+			ReasonClassifier("../train/summary_train_set.txt"))
 
 	def __download_html(self, url):
 		response = urllib2.urlopen(url)
@@ -72,12 +73,12 @@ class AccidentsScraper():
 		return example_datum
 
 	def __get_geographical_coordinates(self, location_str):
-		location = "" #self.geolocator.geocode(location_str)
+		location = self.geolocator.geocode(location_str)
 
 		if location is None:
 			return '?', '?'
 		else:
-			return "",""#str(location.latitude), str(location.longitude)
+			return str(location.latitude), str(location.longitude)
 
 	def __scrape_example_data(self, html):
 		bs = BeautifulSoup(html, 'html.parser')
