@@ -67,6 +67,8 @@ train_set = [
      ' have been presumed including chafed insulation on the wiring for' + \
      ' the center fuel tank float level switch and damaged insulation on' + \
      ' the wiring of the nearby wing anti-ice valve.', 'Conflagration'),
+     ("The aircraft crashed while taking off after the engine failed.",
+        "Engine failure"),
     ('?', 'Unknown')
 ]
 

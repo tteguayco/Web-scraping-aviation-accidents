@@ -4,6 +4,7 @@ import time
 from bs4 import BeautifulSoup
 from dateutil import parser
 from geopy.geocoders import Nominatim
+from reason_classifier import ReasonClassifier
 
 class AccidentsScraper():
 
@@ -11,7 +12,8 @@ class AccidentsScraper():
 		self.url = "http://www.planecrashinfo.com"
 		self.subdomain = "/database.htm"
 		self.data = []
-		self.geolocator = Nominatim()
+		self.geolocator = Nominatim(timeout=10)
+		self.reason_classifier = ReasonClassifier()
 
 	def __download_html(self, url):
 		response = urllib2.urlopen(url)
@@ -70,12 +72,12 @@ class AccidentsScraper():
 		return example_datum
 
 	def __get_geographical_coordinates(self, location_str):
-		location = self.geolocator.geocode(location_str)
+		location = "" #self.geolocator.geocode(location_str)
 
 		if location is None:
 			return '?', '?'
 		else:
-			return str(location.latitude), str(location.longitude)
+			return "",""#str(location.latitude), str(location.longitude)
 
 	def __scrape_example_data(self, html):
 		bs = BeautifulSoup(html, 'html.parser')
@@ -109,6 +111,15 @@ class AccidentsScraper():
 					features_names.append('Longitude')
 				example_data.append(location[0])
 				example_data.append(location[1])
+
+			# If the datum is the SUMMARY (index 12), assign it a category
+			# (reason) using text mining techniques
+			elif tr == trs[12]:
+				summary = tds[1].next_element.text
+				if len(self.data) == 0:
+					features_names.append('Reason')
+				reason = self.reason_classifier.classify(summary)
+				example_data.append(reason)
 
 		# Store features' names
 		if len(features_names) > 0:
@@ -157,7 +168,7 @@ class AccidentsScraper():
 			accidents_links.append(current_year_accidents)
 
 			# Uncomment this break in case of debug mode
-			#break
+			break
 
 		# For each accident, extract its data
 		for i in range(len(accidents_links)):
