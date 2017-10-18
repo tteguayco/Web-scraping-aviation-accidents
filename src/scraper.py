@@ -73,7 +73,10 @@ class AccidentsScraper():
 		return example_datum
 
 	def __get_geographical_coordinates(self, location_str):
-		location = self.geolocator.geocode(location_str)
+		try:
+			location = self.geolocator.geocode(location_str)
+		except:
+			return '?', '?'
 
 		if location is None:
 			return '?', '?'
@@ -169,7 +172,7 @@ class AccidentsScraper():
 			accidents_links.append(current_year_accidents)
 
 			# Uncomment this break in case of debug mode
-			break
+			#break
 
 		# For each accident, extract its data
 		for i in range(len(accidents_links)):
