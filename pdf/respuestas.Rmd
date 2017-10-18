@@ -15,8 +15,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 El conjunto de datos generado como parte de esta actividad práctica reúne diferentes características de accidentes de avión ocurridos a nivel mundial entre los años 1920 y 2017. Algunas de las variables que se recogen en el conjunto de datos son la fecha, la hora, la localización, el número de pasajeros o el de fallecidos.
 
-Para la obtención de estos datos se ha utilizado el lenguaje de programación Python y técnicas de Web Scraping para extraer la información alojada en la base de datos online [PlaneCrashInfo](http://www.planecrashinfo.com/database.htm).
-
 ## Imagen identificativa
 
 ![Avión en llamas tras el accidente en el aeropuerto de Los Rodeos (Tenerife, 1977)](./los_rodeos.jpg)
@@ -26,7 +24,30 @@ Para la obtención de estos datos se ha utilizado el lenguaje de programación P
 
 ## Contenido
 
+Para cada accidente, el cual se corresponde con un registro en el conjunto de datos, se recogen las siguientes características:
+
+* **Date**: día en el que tuvo lugar el accidente en el formato dd/mm/aaa.  
+* **Time**: hora del accidente en formato de 24 horas.  
+* **Location**: lugar del accidente.  
+* **Latitude**: coordenada geográfica correspondiente a la latitud obtenida a partir de la localización y la librería *Geopy*.  
+* **Longitude**: coordenada geográfica correspondiente a la longitud obtenida a partir de la localización y la librería *Geopy*.  
+* **Operator**: nombre de la aerolínea o compañía de vuelos propietaria del avión o aviones involucrados en el accidente.  
+* **Flight#**: número del vuelo.  
+* **Route**: ruta prevista por los aviones implicados.  
+* **ACType**: tipo de avión.  
+* **Registration**: registro ICAO (International Civil Aviation Organization) del avión.  
+* **cn/ln**: construcción o número de serie/línea o número de fuselaje.  
+* **Aboard**: número total de personas a bordo (pasajeros + tripulación).  
+* **Fatalities**: número de víctimas mortales.  
+* **Ground**: número de fallecidos en tierra.  
+* **Summary**: resumen del accidente.  
+* **Reason**: causa del accidente. Constituye una categoría que se ha asignado en base al resumen aplicando técnicas de minería de textos (*Text Mining*).
+
+
+
 ## Agradecimientos
+
+Los datos han sido recolectados desde la base de datos online [PlaneCrashInfo](http://www.planecrashinfo.com/database.htm). Para ello, se ha hecho uso del lenguaje de programación Python y de técnicas de *Web Scraping* para extraer la información alojada en las páginas HTML.
 
 ## Inspiración
 
@@ -36,7 +57,13 @@ También podría ser de gran utilidad en el campo de la *minería de datos*, a l
 
 ## Licencia
 
-La licencia escogida para la publicación de este conjunto de datos ha sido .
+La licencia escogida para la publicación de este conjunto de datos ha sido **CC BY-SA 4.0 License**. Los motivos que han llevado a la elección de esta licencia tienen que ver con la idoneidad de las cláusulas que esta presenta en relación con el trabajo realizado:
+
+* *Se debe proveer el nombre del creador del conjunto de datos generado, indicando los cambios que se han realizado*. De esta manera, se reconoce el trabajo ajeno y en qué medida se han realizado aportaciones en relación con el trabajo original.
+
+* *Se permite un uso comercial*. Esto haría que incrementen las probabilidades de que una empresa utilice los datos generados y realicen trabajos de calidad que reporten cierto reconocimiento al autor original.
+
+* *Las contribuciones realizadas a posteriori sobre el trabajo publicado bajo esta licencia deberán distribuirse bajo la misma*. Esto hace que el trabajo del autor original continúe distribuyéndose bajo los términos que él mismo planteó.
 
 ## Recursos
 
