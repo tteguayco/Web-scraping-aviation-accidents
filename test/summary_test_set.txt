@@ -1,0 +1,40 @@
+'?', 'Unknown'
+'Crashed into mountainous terrain while en route. Most likely weather related.', 'Adverse weather conditions'
+'The aircraft hit a fog shrouded hill at 1,400 ft. after descending below minimum. Improper IFR operation.', 'Adverse weather conditions'
+'Fire aboard the aircraft in the aft right toilet was reported and an emergency descent made. The plane was heavily damaged by fire before fire fighters could rescue passengers. Most fatalities were due to CO before rescuers could reach passengers. The fire started in the aft right toilet either from an electrical short or discarded cigarette.', 'Conflagration'
+'The aircraft flew100 miles off course and struck Black Fork Mountain, 600 feet below the summit of the peak, 91 miles North of Texarkana. Heavy thunderstorms were in the area at the time. The captain attempt to operate the flight under VFR at night without using all the navigational aids and information available to him and his deviation from the pre-planned route without adequate positioning information.', "Adverse weather conditions"
+"The aircraft crashed short of the runway in fog while on approach to Christchurch Airport. The plane crashed two kilometers from the airport, hitting a farm hedge and sliding across a paddock before smashing into a row of trees.", 'Adverse weather conditions'
+'The charter aircraft crashed into a steep hillside on south Thormanby Island 19 minutes after taking off and exploded into flames. Controlled flight into terrain caused by poor weather conditions and the decision by the pilot to fly in such conditions.', 'Adverse weather conditions'
+'The plane struck the side of El Yunque mountain 2,310 feet, east of San Juan in heavy fog.', 'Adverse weather conditions'
+'The aircraft collided with rising terrain at 1,100 ft. after executing a go-around. Failure of the pilot to follow proper IFR procedures.', 'Recklessness of the pilot'
+'Crashed into an 850 meter high peak while on approach to Puerto Plata.', 'Low flight'
+'While en route, the aircraft went into a steep dive and crashed to the ground.', 'Low flight'
+'The sightseeing plane hit a mountainside at an elevation of 4,500 ft., 200 ft. below the summit. The weather was clear at the time of the accident.', 'Low flight'
+'The plane crashed after its right wing clipped a mountaintop while en route.', 'Low flight'
+'An electrical fire forced the cargo planes pilot to attempt an emergency landing in a rice field when the plane crashed, broke into pieces, and burst into flames.', 'Conflagration'
+'The cargo plane experienced an engine failure 5 minutes after taking off causing the aircraft to crash.', 'Engine failure'There was an explosion in the center fuel tank while the aircraft was being pushed back for flight. Ignition of vapors in the empty center tank probably resulted from faulty wiring. Several causes have been presumed including chafed insulation on the wiring for the center fuel tank float level switch and damaged insulation on the wiring of the nearby wing anti-ice valve.', 'Conflagration'
+"The aircraft crashed while taking off after the engine failed.", "Engine failure"
+"Crashed shortly after takeoff from Archerfield Airfiield into a hillside. Suffered structural failure while flying in adverse weather conditons of wind and low overcast.","Adverse weather conditions"
+"Shot down by Japanese military aircraft about 150 miles from Java.","Attacked"
+"While en route, the Marine Corps transport suffered an explosion and structural failure at 20,000 ft., spiraled down and crashed into a soybean field.","Conflagration"
+"The medical flight crashed 3 km south of Mount Gambier Airport in heavy fog. The plane had just taken off and was bound for Adelaide with a patient and her daughter. Angel Flight is used to help people in rural areas access medical treatment.","Adverse weather conditions"
+"The charter flight was just seconds into it's flight when it was observed flying low, before it nose diving into a building at a shopping center and bursting into flames. The pilot made two mayday calls before the aircraft crashed. It is reported the plane suffered engine failure.","Low flight"
+"The helicopter crashed on a highway after hitting a TV tower, six minutes after taking off. The helicopter was carrying an executive of the Eczacibasi group of companies, four of his Russian guests and two pilots.","Low flight"
+"Crashed into Mt. Kapur 67nm from Medan in poor weather conditions with thunderstorms. The plane has not been found. Pilot was flying at 8,500 ft., below the published minimum safe altitude.","Adverse weather conditions"
+"Crashed into a hill in poor visibility, low clouds and fog.","Adverse weather conditions"
+"The jetliner crashed in a remote mountainous area of southern France. The plane was obliterated with no wreckage larger than a small car. According to a flight tracker, the plane fell from 38,000 ft. to 11,400 ft. in eight minutes. The aircraft impacted the ground at a high rate of speed.The copilot locked the captain out of the cockpit and put the plane into a controlled descent until it impacted the ground.","Recklessness of the pilot"
+"The cargo plane had just taken off from Juba Airport when it had difficulty gaining altitude and crashed into a hill about half a mile east of Runway 13.","Bad takeoff"
+"The aircraft, carrying a medical team with three patients, was destroyed when it crashed in a field, 20 miles from Tunis-Carthage Airport. The pilot reported an engine on fire prior to the accident.","Conflagration"
+"For unknown reasons, the small plane crashed into a field while en route.","Unknown"
+"The military transport plane crashed in the mountain, 6 miles northeast of Guelmim in bad weather while attempting to land.","Adverse weather conditions"
+"The sightseeing plane crashed immediately after taking off for Xakanaka Airstrip in the Okavango Delta.","Bad takeoff"
+"The plane hit the top of a hill while enroute, approximately 20 nm from Lutsek'e Airport. The pilot and one passenger were killed.","Low flight"
+"While en route, the plane dove into the ground and exploded.","Unknown"
+"Crashed shortly after taking off.","Bad takeoff"
+"Disappeared over the Atlantic. Never found.","Unknown"
+"Crashed while landing.","Bad landing"
+"Within two minutes after takeoff the aircraft began to lose altitude. It crashed and burned into a snow laden field at the end of the airstrip. Failure of the pilot to remove the rudder and elevator locking pin prior to taking off.","Recklessness of the pilot"
+"Crashed dived into the sea approximately 5 miles from the airport shortly after taking off. Cause unknown. The plane was called "The Star of the East."","Unknown"
+"Lost altitude and ditched near shore after taking off.","Bad takeoff"
+"Crashed en route.","Unknown"
+"After an engine failed the crew declared an emergency and elected to divert to Bukavu but crashed 10 km short of the airport.","Engine failure"
