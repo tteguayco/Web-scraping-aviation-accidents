@@ -19,9 +19,11 @@ El conjunto de datos generado como parte de esta actividad práctica reúne dife
 
 ![Avión en llamas tras el accidente en el aeropuerto de Los Rodeos (Tenerife, 1977)](./los_rodeos.jpg)
 
-\newpage
 ## Contexto
 
+Como se ha comentado, la materia del conjunto de datos se corresponde con accidentes de avión que han tenido lugar durante el último siglo en todo el mundo. Entre ellos pueden encontrarse accidentes de aviación de todo tipo: desde helicópteros militares o de transporte hasta aviones comerciales de pasajeros, pasando por todos aquellos que efectuaban maniobras de entrenamiento.
+
+\newpage
 ## Contenido
 
 Para cada accidente, el cual se corresponde con un registro en el conjunto de datos, se recogen las siguientes características:
@@ -43,7 +45,7 @@ Para cada accidente, el cual se corresponde con un registro en el conjunto de da
 * **Summary**: resumen del accidente.  
 * **Reason**: causa del accidente. Constituye una categoría que se ha asignado en base al resumen aplicando técnicas de minería de textos (*Text Mining*).
 
-
+Los autores de la web *PlaneCrashInfo* llevan recopilando información sobre estos accidentes desde el año 1997. Las formas en las que estos datos han sido recogidos varían desde ... hasta ....
 
 ## Agradecimientos
 
@@ -64,6 +66,10 @@ La licencia escogida para la publicación de este conjunto de datos ha sido **CC
 * *Se permite un uso comercial*. Esto haría que incrementen las probabilidades de que una empresa utilice los datos generados y realicen trabajos de calidad que reporten cierto reconocimiento al autor original.
 
 * *Las contribuciones realizadas a posteriori sobre el trabajo publicado bajo esta licencia deberán distribuirse bajo la misma*. Esto hace que el trabajo del autor original continúe distribuyéndose bajo los términos que él mismo planteó.
+
+## Código fuente y dataset
+
+Tanto el código fuente escrito para la extracción de datos como el dataset generado pueden ser accedidos a través de [este enlace](https://github.com/tteguayco/Web-scraping).
 
 ## Recursos
 
