@@ -45,7 +45,7 @@ Para cada accidente, el cual se corresponde con un registro en el conjunto de da
 * **Summary**: resumen del accidente.  
 * **Reason**: causa del accidente. Constituye una categoría que se ha asignado en base al resumen aplicando técnicas de minería de textos (*Text Mining*).
 
-Los autores de la web *PlaneCrashInfo* llevan recopilando información sobre estos accidentes desde el año 1997. Las formas en las que estos datos han sido recogidos varían desde ... hasta ....
+Los autores de la web *PlaneCrashInfo* llevan recopilando información sobre estos accidentes desde el año 1997. Como fuentes de información utilizadas (listadas en este enlace: http://www.planecrashinfo.com/reference.htm) destacan periódicos, revistas y libros, entre otros.
 
 ## Agradecimientos
 
